@@ -1,5 +1,5 @@
 import { DataTypes } from 'sequelize';
-import sequelize from '../db.js';
+import sequelize from '../config/db.js';
 import User from './user.model.js'; 
 import Product from './product.model.js'; 
 
@@ -10,9 +10,5 @@ const Review = sequelize.define('Review', {
     comment: { type: DataTypes.TEXT },
     date: { type: DataTypes.DATE }
 });
-
-// Relaciones
-Review.belongsTo(User, { foreignKey: 'idUser' });
-Review.belongsTo(Product, { foreignKey: 'idProduct' });
 
 export default Review;
