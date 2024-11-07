@@ -1,5 +1,5 @@
 import { DataTypes } from 'sequelize';
-import sequelize from '../config/db.js';
+import sequelize from '../db.js';
 import OrderProduct from './orderProduct.model.js'; 
 import Review from './review.model.js'; 
 import CartProduct from './cartProduct.model.js';
@@ -14,5 +14,10 @@ const Product = sequelize.define('Product', {
     stockQuantity: { type: DataTypes.INTEGER },
     image: { type: DataTypes.STRING }
 });
+
+// Relaciones
+Product.hasMany(OrderProduct, { foreignKey: 'idProduct' });
+Product.hasMany(Review, { foreignKey: 'idProduct' });
+Product.hasMany(CartProduct, { foreignKey: 'idProduct' });
 
 export default Product;

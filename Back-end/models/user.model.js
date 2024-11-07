@@ -1,5 +1,5 @@
 import { DataTypes } from 'sequelize';
-import sequelize from '../config/db.js';
+import sequelize from '../db.js';
 import Order from './order.model.js'; 
 import Contact from './contact.model.js'; 
 import Review from './review.model.js'; 
@@ -12,5 +12,11 @@ const User = sequelize.define('User', {
     password: { type: DataTypes.STRING, allowNull: false },
     userType: { type: DataTypes.ENUM('owner', 'customer'), allowNull: false }
 });
+
+// Relaciones
+User.hasMany(Order, { foreignKey: 'idUser' });
+User.hasMany(Contact, { foreignKey: 'idUser' });
+User.hasMany(Review, { foreignKey: 'idUser' });
+User.hasMany(Cart, { foreignKey: 'idUser' });
 
 export default User;

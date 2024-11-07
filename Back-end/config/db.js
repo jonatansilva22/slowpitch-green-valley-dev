@@ -1,15 +1,7 @@
 import { Sequelize } from 'sequelize';
 import dotenv from 'dotenv';
-import path from 'path';
 
-// Cargar el archivo .env
-dotenv.config({ path: path.resolve(process.cwd(), 'Back-end/.env') });
-
-console.log('DB_HOST:', process.env.DB_HOST);
-console.log('DB_USER:', process.env.DB_USER);
-console.log('DB_PASSWORD:', process.env.DB_PASSWORD);
-console.log('DB_NAME:', process.env.DB_NAME);
-console.log('DB_PORT:', process.env.DB_PORT);
+dotenv.config();
 
 // Aqui pa probar Sequelize para para el .env
 const sequelize = new Sequelize(
